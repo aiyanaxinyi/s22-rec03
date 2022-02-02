@@ -67,18 +67,23 @@ public class ArrayIntQueue implements IntQueue {
         ensureCapacity();
         int tail = (head + size) % elementData.length;
         elementData[tail] = value;
-        size++;
+        size = size + 1;
         return true;
     }
 
     /** {@inheritDoc} */
     public boolean isEmpty() {
-        return size >= 0;
+        return size == 0;
     }
 
     /** {@inheritDoc} */
     public Integer peek() {
-        return elementData[head];
+        if (size == 0) {
+            return null;
+        } else {
+            return elementData[head];
+        }
+
     }
 
     /** {@inheritDoc} */

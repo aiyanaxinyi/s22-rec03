@@ -53,3 +53,35 @@ describe("test size: ", ()=> {
         expect(queue.size()).toBe(11)
     })
 })
+
+describe("test dequeue: ", () => {
+    test("queue with 2 element should return head ", () => {
+        const queue = createQueue()
+        queue.enqueue(2)
+        queue.enqueue(3)
+        expect(queue.dequeue()).toEqual(3)
+    })
+    test("queue with one element should return head", () => {
+        const queue = createQueue()
+        queue.enqueue(2)
+        expect(queue.dequeue()).toEqual(2)
+    })
+    test("queue with no element should return null", () => {
+        const queue = createQueue()
+        expect(queue.dequeue()).toBeNull()
+    })
+})
+
+test("empty queue", () => {
+    const queue = createQueue()
+    queue.enqueue(1)
+    queue.clear()
+    expect(queue.size()).toBe(0)
+})
+
+test("test isEmpty queue", () => {
+    const queue = createQueue()
+    queue.enqueue(1)
+    queue.clear()
+    expect(queue.isEmpty()).toBeTruthy()
+})
